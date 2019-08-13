@@ -1,0 +1,56 @@
+{
+  "name": "Proyecto",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "descrip": {
+      "type": "string",
+      "required": true
+    },
+    "fechaInicio": {
+      "type": "date",
+      "required": true
+    },
+    "fechaFin": {
+      "type": "date",
+      "required": true
+    },
+    "cupos": {
+      "type": "number",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "idFoundationP": {
+      "type": "belongsTo",
+      "model": "Foundation",
+      "foreignKey": "idFoundationP",
+      "options": {
+        "nestRemoting": true
+      }
+    }
+  },
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$unauthenticated",
+      "permission": "DENY"
+    }
+  ],
+  "methods": {}
+}
